@@ -14,3 +14,11 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST "ls"
