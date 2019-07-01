@@ -1,0 +1,34 @@
+.button1 {
+  font-size: 16px;
+  font-family: "Fira Code";
+  color: white;
+  padding: 10px 28px;
+  background-color: #008cba;
+}
+.button1:hover {
+  background-color: white; /* Green */
+  color: #008cba;
+  cursor: pointer;
+}
+
+.upload {
+  font-family: "Fira Code";
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.upload + label {
+  font-family: "Fira Code";
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+.upload:focus + label,
+.upload + label {
+  cursor: pointer; /* "hand" cursor */
+}
