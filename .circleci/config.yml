@@ -25,7 +25,7 @@ jobs:
       - run:
           name: build and run Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "bash deployReact.sh"
+            ssh -t $SSH_USER@$SSH_HOST "sudo bash & bash deployReact.sh"
 
 workflows:
   version: 2
