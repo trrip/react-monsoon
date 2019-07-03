@@ -18,7 +18,7 @@
     "xlsx": "^0.14.1"
   },
   "scripts": {
-    "start": "PORT=5000 react-scripts start",
+    "start": "react-scripts start",
     "start:production": "npm run build && npm run start:prod",
     "start:prod": "NODE_ENV=production node server",
     "build": "react-scripts build",
