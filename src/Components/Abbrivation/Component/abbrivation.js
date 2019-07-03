@@ -265,9 +265,9 @@ class Abbrivation extends React.Component {
                 description: element.defination
               });
               var re = new RegExp(
-                "(?<![\\w\\d])" +
+                "(?<![\\w\\d(])" +
                   element.word +
-                  "(?![\\w\\d])(?![^<]*>|[^<>] <)+",
+                  "(?![\\w\\d):=])(?! =)(?! :)(?![^<]*>|[^<>] <)+",
                 "g"
               );
 
@@ -333,9 +333,9 @@ class Abbrivation extends React.Component {
                 description: element.defination
               });
               var re = new RegExp(
-                "(?<![\\w\\d])" +
+                "(?<![\\w\\d(])" +
                   element.word +
-                  "(?![\\w\\d])(?![^<]*>|[^<>] <)+",
+                  "(?![\\w\\d):=])(?! =)(?! :)(?![^<]*>|[^<>] <)+",
                 "g"
               );
               let changingWord = `<a href='abbr_${element.word}'>${

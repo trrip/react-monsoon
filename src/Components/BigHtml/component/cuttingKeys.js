@@ -255,7 +255,7 @@ export default class CuttingKeys extends React.Component {
           accept="text/html"
           onChange={e => this.handleFile(e.target.files)}
         />
-        <label htmlFor="file">Choose a really Big HTML File</label>
+        <label htmlFor="file">Choose a Big HTML File</label>
         <p>
           {this.state.fileName === ""
             ? "No File selected"
