@@ -145,7 +145,7 @@ class HyphenateUI extends React.Component {
   };
 
   fileSelectorHandler = fileNames => {
-    //show loader
+    // show loader
     // console.log(fileNames);
     if (fileNames.length !== 0) {
       let tempHolder = [...this.state.files];

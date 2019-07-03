@@ -256,6 +256,7 @@ class Abbrivation extends React.Component {
           // console.log(originalFile);
           let bodyData = this.getBodyOfPage(originalFile)[1];
           bodyData = this.removeAbbrivation(bodyData); //this line is to remove older abbreviation
+          // if(body does contain that don't execute)
           for (let i in this.state.abbrStore) {
             let element = this.state.abbrStore[i];
             if (element.defination !== "") {
