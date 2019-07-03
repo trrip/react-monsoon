@@ -1,0 +1,10 @@
+{
+  "apps": [
+    {
+      "name": "Monsoon",
+      "script": "npm",
+      "interpreter": "none",
+      "args": "serve -s build -l 5000"
+    }
+  ]
+}
