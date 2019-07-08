@@ -88,7 +88,7 @@ export default class HypenationHelper {
 
   hypenateContentWithLanguage = (content, language) => {
     content = this.removeExistingTags(content);
-    content = content.replace("&dagger;", "†");
+    content = content.replace("&dagger;", "†"); //removed and added the dagger from files and form words.
     content = content.replace("&Dagger;", "‡");
     content = this.getEscapedContent(content, false);
     if (content != null) {
