@@ -1,7 +1,7 @@
 import { obj as hyphenate } from "./hypenation/hyphenate";
 
 const BodyPattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im; //not sending it with body tag
-const WordPattern = /([A-Za-z\x7F-ῼ]{5,})(?![^<]*>|[^<>]<\\)(?![0-9])/g;
+const WordPattern = /([A-Za-z\x7F-‡]{5,})(?![^<]*>|[^<>]<\\)(?![0-9])/g;
 
 export default class HypenationHelper {
   //zero entity addition
@@ -56,24 +56,13 @@ export default class HypenationHelper {
 
   //getting the hypenated word
   getHyphenatedWord = (word, language) => {
-    let returnValue = "";
-    if (word.find("&dagger;") !== 0) {
-      word = word.replace("&dagger;", "†");
-    } else if (word.find("&Dagger;") === 0) {
-      word = word.replace("&Dagger;", "‡");
-    } else {
-      return (returnValue = hyphenate.conv(
-        word,
-        language === "" ? "en" : language
-      ));
-    }
-    returnValue = returnValue.replace("‡", "&Dagger;");
-    returnValue = returnValue.replace("†", "&dagger;");
-    return returnValue;
+    return hyphenate.conv(word, language === "" ? "en" : language);
   };
+
   //actual hypenation working here
   hypenateAndReturnContent = (content, language) => {
     let word_matches_array = content.match(WordPattern);
+    console.log(word_matches_array);
     if (word_matches_array != null) {
       word_matches_array.forEach(element => {
         // Following Regex is used to avoid replacing text inside <> html tags.
@@ -99,6 +88,8 @@ export default class HypenationHelper {
 
   hypenateContentWithLanguage = (content, language) => {
     content = this.removeExistingTags(content);
+    content = content.replace("&dagger;", "†");
+    content = content.replace("&Dagger;", "‡");
     content = this.getEscapedContent(content, false);
     if (content != null) {
       content = this.hypenateAndReturnContent(content, language);
@@ -107,6 +98,8 @@ export default class HypenationHelper {
     }
 
     this.getEscapedContent(content, true);
+    content = content.replace("†", "&dagger;");
+    content = content.replace("‡", "&Dagger;");
     return content;
   };
 
