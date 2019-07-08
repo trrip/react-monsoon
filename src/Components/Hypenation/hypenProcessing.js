@@ -56,7 +56,20 @@ export default class HypenationHelper {
 
   //getting the hypenated word
   getHyphenatedWord = (word, language) => {
-    return hyphenate.conv(word, language === "" ? "en" : language);
+    let returnValue = "";
+    if (word.find("&dagger;") !== 0) {
+      word = word.replace("&dagger;", "†");
+    } else if (word.find("&Dagger;") === 0) {
+      word = word.replace("&Dagger;", "‡");
+    } else {
+      return (returnValue = hyphenate.conv(
+        word,
+        language === "" ? "en" : language
+      ));
+    }
+    returnValue = returnValue.replace("‡", "&Dagger;");
+    returnValue = returnValue.replace("†", "&dagger;");
+    return returnValue;
   };
   //actual hypenation working here
   hypenateAndReturnContent = (content, language) => {

@@ -40,7 +40,8 @@ class Abbrivation extends React.Component {
   filterAbbrStoreForDuplication = abbrStore => {
     let secondStore = [];
     let tempStore = [];
-    for (let i = abbrStore.length - 1; i >= 0; i--) {
+    // for (let i = abbrStore.length - 1; i >= 0; i--) {
+    for (let i = 0; i < abbrStore.length; i++) {
       let abbr = abbrStore[i];
       if (tempStore.indexOf(abbr.word) === -1) {
         tempStore.push(abbr.word);
@@ -186,6 +187,7 @@ class Abbrivation extends React.Component {
     let regex = /<a href="abbr_(.*?)">(.*?)<\/a>/g;
     tempDataHolder = tempDataHolder.replace(regex, "$2");
     // tempDataHolder = tempDataHolder.replace(regex, "superman");
+    console.log(`temp holde ${tempDataHolder}`);
     return tempDataHolder;
   };
 
@@ -201,6 +203,18 @@ class Abbrivation extends React.Component {
   };
 
   assignDefinationToAbbrivationFromResponse = response => {
+    //rework this so that it will work to add new words as well.
+    //-
+    /*let tempArr = [...this.state.abbrStore];
+    for (let i in tempArr) {
+      let tempHolder = response.find(e => e.word === tempArr[i].word);
+      if (tempHolder !== undefined)
+        tempArr[i].defination = tempHolder.defination;
+      else tempArr[i].defination = "";
+    }
+    return tempArr;*/
+    //new work after issue no 21 where the words that needs to placed even if they don't find it in regex.
+
     let tempArr = [...this.state.abbrStore];
     for (let i in tempArr) {
       let tempHolder = response.find(e => e.word === tempArr[i].word);
@@ -208,10 +222,21 @@ class Abbrivation extends React.Component {
         tempArr[i].defination = tempHolder.defination;
       else tempArr[i].defination = "";
     }
+
+    for (let i of response) {
+      if (i.isNewWord !== "DONTADD") {
+        let temp = {};
+        temp.word = i.word;
+        temp.defination = i.defination;
+        tempArr.push(temp);
+      }
+    }
+    console.log("");
     return tempArr;
   };
 
   handleResponseFromExcel = response => {
+    console.log(response);
     let tempArr = this.assignDefinationToAbbrivationFromResponse(response);
     this.setState({
       abbrStore: tempArr,
@@ -225,7 +250,7 @@ class Abbrivation extends React.Component {
 
   getCurrentWordsInExcel = () => {
     let fileToDownload = [];
-
+    fileToDownload.push([["Word"], ["Defination"]]);
     for (let i in this.state.abbrStore) {
       let temp = [];
       temp.push(this.state.abbrStore[i].word);
@@ -238,7 +263,7 @@ class Abbrivation extends React.Component {
     }
     if (this.state.abbrStore.length > 0)
       ExcelHandlerObj.downloadXlsxFileFromData(fileToDownload);
-    else alert("the store is empty");
+    else alert("There are no abbreviations to download for you.");
   };
 
   downloadFileAfterProcessing = () => {
@@ -246,7 +271,7 @@ class Abbrivation extends React.Component {
     //   "abbr": "1",
     //     "description": "Strong recommendation"
     // }
-
+    //ISSUE 21 Check here
     let jsonToDownload = [];
     for (let i in this.state.files) {
       if (this.state.files.length > 0) {
@@ -257,6 +282,7 @@ class Abbrivation extends React.Component {
           let bodyData = this.getBodyOfPage(originalFile)[1];
           bodyData = this.removeAbbrivation(bodyData); //this line is to remove older abbreviation
           // if(body does contain that don't execute)
+          console.log(bodyData);
           for (let i in this.state.abbrStore) {
             let element = this.state.abbrStore[i];
             if (element.defination !== "") {
@@ -271,7 +297,7 @@ class Abbrivation extends React.Component {
                 "g"
               );
 
-              let changingWord = `<a href='abbr_${element.word}'>${
+              let changingWord = `<a href="abbr_${element.word}">${
                 element.word
               }</a>`;
               bodyData = bodyData.replace(re, changingWord);
@@ -338,7 +364,7 @@ class Abbrivation extends React.Component {
                   "(?![\\w\\d):=])(?! =)(?! :)(?![^<]*>|[^<>] <)+",
                 "g"
               );
-              let changingWord = `<a href='abbr_${element.word}'>${
+              let changingWord = `<a href="abbr_${element.word}">${
                 element.word
               }</a>`;
               bodyData = bodyData.replace(re, changingWord);

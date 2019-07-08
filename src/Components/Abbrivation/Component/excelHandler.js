@@ -14,13 +14,15 @@ export default class ExcelHandler {
       let temp = {};
       if (i !== 0) {
         temp.word = data[i][0];
-        temp.defination = data[i][1];
+        temp.defination = data[i][1].trim();
+        if (data[i][2] !== "") temp.isNewWord = data[i][2];
+        else temp.isNewWord = "DONTADD";
       }
       finalData.push(temp);
     }
     //work here before sending things u
     // remove all unnecessary thigns
-    // console.log(finalData);
+    console.log(`excel Handler data that is passed on :${finalData}`);
     if (handler !== undefined) handler(finalData);
   };
 
