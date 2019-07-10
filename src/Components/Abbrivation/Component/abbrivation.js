@@ -412,8 +412,8 @@ class Abbrivation extends React.Component {
           flex: 1,
           alignItems: "center"
         }}>
-        <h4>abbreviation</h4>
-        <hr width="100%" />
+        <h2>Abbreviation</h2>
+        <hr width="95%" />
         <p>Please select html Page to get abbreviation from</p>
         <input
           type="file"
@@ -424,7 +424,12 @@ class Abbrivation extends React.Component {
           multiple
           onChange={e => this.fileSelectorHandler(e.target.files)}
         />
-        <label htmlFor="file1">Choose a Html file</label>{" "}
+        <label
+          style={{ paddingLeft: "5px", paddingRight: "5px " }}
+          htmlFor="file1">
+          Choose a Html file
+        </label>{" "}
+        <hr width="50%" />
         <div>
           <input
             type="file"
@@ -434,12 +439,17 @@ class Abbrivation extends React.Component {
             className="upload"
             onChange={event => this.uploadExcel(event.target.files)}
           />
-          <label htmlFor="file">Choose a Excel File</label>{" "}
+          <label
+            style={{ paddingLeft: "5px", paddingRight: "5px " }}
+            htmlFor="file">
+            Choose a Excel File
+          </label>
+          {"  OR  "}
           <button className="button1" onClick={this.getCurrentWordsInExcel}>
             Download Excel
           </button>
-          <hr width="100%" />
         </div>
+        <hr width="50%" />
         <div
           style={{
             alignItems: "center",
@@ -476,7 +486,7 @@ class Abbrivation extends React.Component {
             flexDirection: "column",
             flex: 1
           }}>
-          <hr width="100%" />
+          <hr width="95%" />
 
           <button
             style={{ width: "40%", alignSelf: "center" }}

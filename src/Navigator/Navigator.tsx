@@ -23,13 +23,13 @@ class Navigator extends Component {
                 <Link
                   style={{
                     display: "block",
-                    color: "white",
+                    color: "black",
+                    backgroundColor: "#ececec",
                     textAlign: "center",
                     padding: "14px",
                     textDecoration: "none"
                   }}
-                  to="/"
-                >
+                  to="/">
                   BigHtml
                 </Link>
               </li>
@@ -37,13 +37,13 @@ class Navigator extends Component {
                 <Link
                   style={{
                     display: "block",
-                    color: "white",
+                    color: "black",
+                    backgroundColor: "#ececec",
                     textAlign: "center",
                     padding: "14px",
                     textDecoration: "none"
                   }}
-                  to="/abbreviation/"
-                >
+                  to="/abbreviation/">
                   Abbreviation
                 </Link>
               </li>
@@ -51,13 +51,13 @@ class Navigator extends Component {
                 <Link
                   style={{
                     display: "block",
-                    color: "white",
+                    color: "black",
+                    backgroundColor: "#ececec",
                     textAlign: "center",
                     padding: "14px",
                     textDecoration: "none"
                   }}
-                  to="/hypenation/"
-                >
+                  to="/hypenation/">
                   Hypenation
                 </Link>
               </li>

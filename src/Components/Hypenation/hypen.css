@@ -1,6 +1,8 @@
 .button1 {
   font-size: 16px;
-  font-family: "Fira Code";
+  font: "Lucida Sans";
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: white;
   padding: 10px 28px;
   background-color: #008cba;
@@ -16,6 +18,7 @@
   height: 0.1px;
   opacity: 0;
   overflow: hidden;
+  align-self: auto;
   position: absolute;
   z-index: -1;
 }

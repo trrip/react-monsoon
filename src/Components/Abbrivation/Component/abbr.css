@@ -1,5 +1,6 @@
 @font-face {
-  font-family: firacode;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   src: url(https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-Light.ttf);
 }
 table,
@@ -15,7 +16,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 th {
-  background-color: #008cba;
+  background-color: #5da2d5;
   color: white;
 }
 th,
@@ -81,14 +82,15 @@ td {
 }
 .button1 {
   font-size: 16px;
-  font-family: "Fira Code";
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: white;
   padding: 10px 28px;
-  background-color: #008cba;
+  background-color: #5da2d5;
 }
 .button1:hover {
   background-color: white; /* Green */
-  color: #008cba;
+  color: #5da2d5;
   cursor: pointer;
 }
 
@@ -114,5 +116,5 @@ td {
 
 .goToNextLink {
   text-align: center;
-  color: #008cba;
+  color: #5da2d5;
 }

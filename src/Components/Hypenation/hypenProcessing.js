@@ -2,6 +2,7 @@ import { obj as hyphenate } from "./hypenation/hyphenate";
 
 const BodyPattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im; //not sending it with body tag
 const WordPattern = /([A-Za-z\x7F-‡]{5,})(?![^<]*>|[^<>]<\\)(?![0-9])/g;
+// const WordPattern = /([A-Za-z\x7F-ﬁ]{5,})(?![^<]*>|[^<>]<\\)(?![0-9])/g; to get 64000 kind os words
 
 export default class HypenationHelper {
   //zero entity addition
@@ -62,7 +63,6 @@ export default class HypenationHelper {
   //actual hypenation working here
   hypenateAndReturnContent = (content, language) => {
     let word_matches_array = content.match(WordPattern);
-    console.log(word_matches_array);
     if (word_matches_array != null) {
       word_matches_array.forEach(element => {
         // Following Regex is used to avoid replacing text inside <> html tags.

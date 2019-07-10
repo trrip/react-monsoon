@@ -353,6 +353,7 @@ class HyphenateUI extends React.Component {
     return (
       <div
         style={{
+          fontFamily: "Ariel",
           display: "flex",
           width: "100%",
           flexDirection: "column",
@@ -365,17 +366,15 @@ class HyphenateUI extends React.Component {
         </p>
         <b>Select Language before you start uploading the files.</b>
         <br />
-        <div
-          style={{
-            width: "40%"
-          }}>
-          <hr width="100%" />
+        <hr width="50%" />
+        <select
+          onChange={this.changeLanguage}
+          // className="browser-defalt"
+        >
+          {this.language}
+        </select>
 
-          <select onChange={this.changeLanguage} className="browser-default">
-            {this.language}
-          </select>
-        </div>
-        <hr width="100%" />
+        <hr width="95%" />
 
         <br />
         <input
@@ -386,7 +385,11 @@ class HyphenateUI extends React.Component {
           multiple
           onChange={e => this.fileSelectorHandler(e.target.files)}
         />
-        <label htmlFor="file">Choose a HTML File</label>
+        <label
+          style={{ paddingLeft: "5px", paddingRight: "5px" }}
+          htmlFor="file">
+          Choose a HTML File
+        </label>
         <br />
         <button
           style={{ alignItems: "center" }}
@@ -394,20 +397,20 @@ class HyphenateUI extends React.Component {
           className="button1">
           Reset selection
         </button>
-        <hr width="100%" />
-        <br />
+        <hr width="95%" />
+
         <div
           style={{
             width: "55%"
           }}>
           <ul className="collection with-header">
             <li className="collection-header">
-              <h5>Files selected for download</h5>
+              <h4>Files selected for download</h4>
             </li>
             {listOfFiles}
           </ul>
         </div>
-        <hr width="100%" />
+        <hr width="95%" />
 
         {showDownloadButton}
       </div>

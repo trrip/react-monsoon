@@ -30,9 +30,15 @@ export default class CMSHandler extends React.Component {
 
   render() {
     let defination = !this.state.showTextBox ? (
-      <div onClick={this.cellClickHandler}>
+      <div style={{}} onClick={this.cellClickHandler}>
         {this.state.value.length === 0 ? (
-          <label style={{ backgroundColor: "#f03434", color: "#FFFFFF" }}>
+          <label
+            style={{
+              backgroundColor: "#f03434",
+              color: "#FFFFFF",
+              paddingLeft: "5px",
+              paddingRight: "5px "
+            }}>
             CMS ID :{PLACEHOLDER}
           </label>
         ) : (
@@ -42,7 +48,16 @@ export default class CMSHandler extends React.Component {
     ) : (
       <div>
         <input value={this.state.value} onChange={this.valueChangeHandler} />
-        <button onClick={this.saveChangeHandler}>Okay</button>
+        <button
+          className="okButton"
+          style={{
+            marginLeft: "15px",
+            paddingLeft: "14px",
+            paddingRight: "14px "
+          }}
+          onClick={this.saveChangeHandler}>
+          Okay
+        </button>
       </div>
     );
 

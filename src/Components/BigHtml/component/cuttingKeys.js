@@ -247,7 +247,7 @@ export default class CuttingKeys extends React.Component {
           value={this.state.CMSIDHandler.CMSValue}
           CMSChangeHander={this.changeTheCMSValue}
         />
-        <hr width="100%" />
+        <hr width="95%" />
         <input
           type="file"
           id="file"
@@ -255,16 +255,20 @@ export default class CuttingKeys extends React.Component {
           accept="text/html"
           onChange={e => this.handleFile(e.target.files)}
         />
-        <label htmlFor="file">Choose a Big HTML File</label>
+        <label
+          style={{ paddingLeft: "5px", paddingRight: "5px" }}
+          htmlFor="file">
+          Choose a Big HTML File
+        </label>
         <p>
           {this.state.fileName === ""
             ? "No File selected"
             : this.state.fileName}
         </p>
-        <hr width="100%" />
+        <hr width="95%" />
         <p>Orphan pages list</p>
         {orphanTable}
-        <hr width="100%" />
+        <hr width="95%" />
         <button className="button1" onClick={this.resetFile}>
           Reset
         </button>
