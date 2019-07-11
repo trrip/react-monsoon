@@ -74,8 +74,6 @@ class Abbrivation extends React.Component {
           localStorage.getItem(ABBRIVATIONSTORECONSTANT)
         );
 
-        console.log(fileData);
-
         if (fileData !== null) {
           let filesArray = fileData.files;
           let language = fileData.language;
@@ -97,7 +95,6 @@ class Abbrivation extends React.Component {
           finalData.abbrStore = abbrStore;
           finalData.fileName = fileName;
           finalData.language = language;
-          console.log(finalData);
           this.setState(finalData);
         }
         localStorage.removeItem(ABBRIVATIONSTORECONSTANT);
@@ -187,7 +184,6 @@ class Abbrivation extends React.Component {
     let regex = /<a href="abbr_(.*?)">(.*?)<\/a>/g;
     tempDataHolder = tempDataHolder.replace(regex, "$2");
     // tempDataHolder = tempDataHolder.replace(regex, "superman");
-    console.log(`temp holde ${tempDataHolder}`);
     return tempDataHolder;
   };
 
@@ -199,7 +195,6 @@ class Abbrivation extends React.Component {
       temp[index].defination = defination;
     }
     this.setState({ abbrStore: temp });
-    console.log(`defination changed`);
   };
 
   assignDefinationToAbbrivationFromResponse = response => {
@@ -231,12 +226,11 @@ class Abbrivation extends React.Component {
         tempArr.push(temp);
       }
     }
-    console.log("");
+    tempArr = this.filterAbbrStoreForDuplication(tempArr);
     return tempArr;
   };
 
   handleResponseFromExcel = response => {
-    console.log(response);
     let tempArr = this.assignDefinationToAbbrivationFromResponse(response);
     this.setState({
       abbrStore: tempArr,
@@ -282,7 +276,6 @@ class Abbrivation extends React.Component {
           let bodyData = this.getBodyOfPage(originalFile)[1];
           bodyData = this.removeAbbrivation(bodyData); //this line is to remove older abbreviation
           // if(body does contain that don't execute)
-          console.log(bodyData);
           for (let i in this.state.abbrStore) {
             let element = this.state.abbrStore[i];
             if (element.defination !== "") {
@@ -386,7 +379,6 @@ class Abbrivation extends React.Component {
     dataToSende.abbr = [...jsonToDownload];
     dataToSende.language =
       this.state.language === "" ? "en" : this.state.language;
-    console.log(dataToSende);
     localStorage.setItem("hypen", JSON.stringify(dataToSende));
   };
 
