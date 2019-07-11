@@ -4,7 +4,7 @@ import HtmlProcessor from "../processing/htmlProcessor";
 import TocTreeHandler from "../processing/tableOfContentHandler";
 import DataFileHandler from "../processing/dataFileHandler";
 import localStorage from "localStorage";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { supportedLanguages } from "../../Hypenation/hypenation/Language";
 import SOAPHandler from "../../SOAPHandler/SOAPHandler.js";
 import "../component/cuttinKeys.css";
@@ -263,7 +263,7 @@ export default class CuttingKeys extends React.Component {
         <p>
           {this.state.fileName === ""
             ? "No File selected"
-            : this.state.fileName}
+            : `Selected page : ${this.state.fileName}`}
         </p>
         <hr width="95%" />
         <p>Orphan pages list</p>
@@ -273,24 +273,56 @@ export default class CuttingKeys extends React.Component {
           Reset
         </button>
         {this.state.downloadInformation.downloadEnable === true ? (
-          <div>
-            <button
-              className="button1"
-              onClick={this.downloadFileAfterCuttingKeys}>
-              Download
-            </button>
-            <button className="button1" onClick={this.uploadDirectly}>
-              upload Directly
-            </button>
+          <div
+            style={{
+              margin: "15px",
+              display: "flex",
+              height: "100%",
+              width: "100%",
+              flexDirection: "column",
+              flex: 1,
+              alignItems: "center"
+            }}>
+            <div
+              style={{
+                display: "flex",
+                height: "100%",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "center",
+                flex: 1,
+                alignItems: "center"
+              }}>
+              <button
+                className="button1"
+                style={{
+                  marginRight: "10px",
+                  marginLeft: "10px",
+                  width: "154px"
+                }}
+                onClick={this.downloadFileAfterCuttingKeys}>
+                Download
+              </button>
+              <button
+                style={{
+                  marginRight: "10px",
+                  marginLeft: "10px"
+                }}
+                className="button1"
+                onClick={this.uploadDirectly}>
+                Upload directly
+              </button>
+            </div>
             <br />
+            {"Take data and "}
             <Link to="/Hypenation/cuttingKeys" onClick={this.goToHypenation}>
               Go to Hypenation
             </Link>
-
+            {" Or take it "}
             <Link
               to="/abbreviation/cuttingKeys"
               onClick={this.goToAbbrivations}>
-              Go to Abbrivation
+              to Abbrivation
             </Link>
           </div>
         ) : null}
