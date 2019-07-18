@@ -6,7 +6,7 @@ const OPENHEADDERTAG = `
   <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 	<title><projectID></title>
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=1" name="viewport" />**
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=1" name="viewport" />
   <link charset="UTF-8" href="<projectID>.css" rel="STYLESHEET" type="text/css" />
   <link charset="UTF-8" href="HighLight.css" rel="STYLESHEET" type="text/css" />
   <script src="jquery-2.0.31.min.js"></script>
