@@ -50,7 +50,7 @@ class AbbrTableCell extends React.Component {
     );
     return (
       <tr>
-        <td className="key">{this.state.word}</td>
+        <td className="key">welcome{this.state.word}</td>
         <td>{defination}</td>
       </tr>
     );
