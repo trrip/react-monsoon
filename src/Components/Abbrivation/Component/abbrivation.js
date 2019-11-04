@@ -283,6 +283,8 @@ class Abbrivation extends React.Component {
                 abbr: element.word,
                 description: element.defination
               });
+              // replace with html entity.
+              element.word = element.word.replace("+", "&plus;") ;
               var re = new RegExp(
                 "(?<![\\w\\d(])" +
                   element.word +
@@ -293,6 +295,8 @@ class Abbrivation extends React.Component {
               let changingWord = `<a href="abbr_${element.word}">${
                 element.word
               }</a>`;
+              changingWord =changingWord.replace("&plus;", "+") ;
+              //replace again with original symbol.
               bodyData = bodyData.replace(re, changingWord);
             }
           }
@@ -351,6 +355,8 @@ class Abbrivation extends React.Component {
                 abbr: element.word,
                 description: element.defination
               });
+              // replace with html entity.
+              element.word = element.word.replace("+", "&plus;") ;
               var re = new RegExp(
                 "(?<![\\w\\d(])" +
                   element.word +
@@ -360,6 +366,8 @@ class Abbrivation extends React.Component {
               let changingWord = `<a href="abbr_${element.word}">${
                 element.word
               }</a>`;
+               changingWord =changingWord.replace("&plus;", "+") ;
+              //replace again with original symbol.
               bodyData = bodyData.replace(re, changingWord);
             }
           }
