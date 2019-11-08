@@ -88,18 +88,24 @@ export default class HypenationHelper {
 
   hypenateContentWithLanguage = (content, language) => {
     content = this.removeExistingTags(content);
-    content = content.replace("&dagger;", "†"); //removed and added the dagger from files and form words.
-    content = content.replace("&Dagger;", "‡");
+    let daggerRegex = /&dagger;/g;
+    let doubleDagger = /&Dagger;/g;
+    let micro = /&micro;/g;
+    content = content.replace(daggerRegex, "†"); //removed and added the dagger from files and form words.
+    content = content.replace(doubleDagger, "‡");
+    content = content.replace(micro, "µ");
+
+    console.log(content);
     content = this.getEscapedContent(content, false);
     if (content != null) {
       content = this.hypenateAndReturnContent(content, language);
       content = this.addZeroWidthEntity(content);
       //console.log(`-----` + content);
     }
-
     this.getEscapedContent(content, true);
     content = content.replace("†", "&dagger;");
     content = content.replace("‡", "&Dagger;");
+    content = content.replace("µ", "&micro;");
     return content;
   };
 
