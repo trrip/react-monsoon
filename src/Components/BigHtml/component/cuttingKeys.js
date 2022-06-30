@@ -239,7 +239,7 @@ export default class CuttingKeys extends React.Component {
           flex: 1,
           alignItems: "center"
         }}>
-        <p>Select the Language</p>
+        <p>Select the Language Test</p>
         <select onChange={this.changeLanguage} className="browser-default">
           {this.language}
         </select>
