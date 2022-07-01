@@ -187,6 +187,7 @@ export default class CuttingKeys extends React.Component {
 
 // This function is used for ACoMS
   uploadDirectlyToACoMS = () => {
+  	console.log("upload acoms clicked");
     let service = new SOAPHandler("uploadTOC_HTML"); //method name
 
     //{page: "<body onload="_geturl1();">↵	↵	<p class="h1">Autho…art Foundation of Australia</span></p>↵	↵	</body>", info: {…}}
