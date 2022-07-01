@@ -173,12 +173,25 @@ export default class CuttingKeys extends React.Component {
     );
   };
 
-  uploadDirectly = () => {
+// This function is used for CMS
+  uploadDirectlyToCMS = () => {
     let service = new SOAPHandler("uploadTOC_HTML"); //method name
 
     //{page: "<body onload="_geturl1();">↵	↵	<p class="h1">Autho…art Foundation of Australia</span></p>↵	↵	</body>", info: {…}}
     service.soap(
       "https://cpms.bbinfotech.com:443/CMS/handshake/react-monsoon/MonsoonRequestHandler.php",
+      "urn:MonsoonRequestHandler#uploadTOC_HTML",
+      JSON.stringify(this.state.downloadInformation.downloadData)
+    );
+  };
+
+// This function is used for ACoMS
+  uploadDirectlyToACoMS = () => {
+    let service = new SOAPHandler("uploadTOC_HTML"); //method name
+
+    //{page: "<body onload="_geturl1();">↵	↵	<p class="h1">Autho…art Foundation of Australia</span></p>↵	↵	</body>", info: {…}}
+    service.soap(
+      "https://acoms.bbinfotech.com:443/acoms/handshake/react-monsoon/MonsoonRequestHandler.php",
       "urn:MonsoonRequestHandler#uploadTOC_HTML",
       JSON.stringify(this.state.downloadInformation.downloadData)
     );
@@ -309,8 +322,17 @@ export default class CuttingKeys extends React.Component {
                   marginLeft: "10px"
                 }}
                 className="button1"
-                onClick={this.uploadDirectly}>
-                Upload directly
+                onClick={this.uploadDirectlyToCMS}>
+                Upload directly on CMS
+              </button>
+              <button
+                style={{
+                  marginRight: "10px",
+                  marginLeft: "10px"
+                }}
+                className="button1"
+                onClick={this.uploadDirectlyToAcoMS}>
+                Upload directly on ACoMS
               </button>
             </div>
             <br />
